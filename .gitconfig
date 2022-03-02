@@ -1,0 +1,21 @@
+[core]
+        editor = vim
+        precomposeunicode = true
+        quotepath = false
+[alias]
+        log-graph = log --all --decorate --oneline --graph
+        lg = log --graph --abbrev-commit --decorate --date=relative
+        pushnv = push --no-verify
+        olog = log --oneline
+    stashup = stash -u
+        br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+[gpg]
+        program = gpg
+[commit]
+        gpgsign = true
+[pull]
+        rebase = true
+[init]
+        defaultBranch = master
+[advice]
+        skippedCherryPicks = false
