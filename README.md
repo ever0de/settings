@@ -10,6 +10,10 @@
   - `brew install gpg-suite`
   - [~/.gnupg/gpg-agent.conf](./gpg-agent.conf)
 
+### Raycast
+
+<https://www.raycast.com/>
+
 ### App store
 
 ### Rectangle
@@ -134,6 +138,7 @@ PostgreSQL GUI Client
 Markdown text editor
 
 - MarkText
+
 - Authy Desktop
 - CleanMyMac X
 - Figma
