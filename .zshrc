@@ -1,5 +1,5 @@
 alias cfp="cargo check --release --all-features --all-targets --workspace && cargo fmt --all && cargo clippy --release --all-     features --all-targets --workspace"
-alias ls="exa"
+alias ls="lsd"
 alias grep="rg"
 alias cd="z"
 alias cleanup-rust="find . -type d -name target -prune -exec rm -r {} +"
