@@ -1,21 +1,53 @@
 [core]
-        editor = vim
-        precomposeunicode = true
-        quotepath = false
+    editor = nvim
+    precomposeunicode = true
+    quotepath = false
+
+    # git-delta
+    pager = delta
 [alias]
-        log-graph = log --all --decorate --oneline --graph
-        lg = log --graph --abbrev-commit --decorate --date=relative
-        pushnv = push --no-verify
-        olog = log --oneline
+    log-graph = log --all --decorate --oneline --graph
+    lg = log --graph --abbrev-commit --decorate --date=relative
+    olog = log --oneline
+    pushnv = push --no-verify
     stashup = stash -u
-        br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+    gc-all = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc
+
+    # git all
+    #
+    # It shows *all* git commit references in a graph format, including dangling
+    # or unreachable commits (e.g., popped stashes, etc.).
+    all = "!_() { git log --oneline --graph --reflog $(git fsck --unreachable | perl -ne 'print \"$1\\n\" if /^\\w+ commit ([0-9a-f]+)$/'); }; _"
 [gpg]
-        program = gpg
+    program = gpg
 [commit]
-        gpgsign = true
+    gpgsign = true
 [pull]
-        rebase = true
+    rebase = true
 [init]
-        defaultBranch = master
+    defaultBranch = master
 [advice]
-        skippedCherryPicks = false
+    skippedCherryPicks = false
+[push]
+    autoSetupRemote = true
+
+# git-delta
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
+    line-numbers = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+[pack]
+    usePathWalk = true
+[pager]
+    diff = diffnav
